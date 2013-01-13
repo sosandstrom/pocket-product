@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("{domain}/category")
-public class CategoryController extends CrudController<JpCategory, DpCategory, Long> {
+public class CategoryController extends CrudController<JpCategory, DpCategory, Long, CategoryService> {
 
     @Override
     public JpCategory convertDomain(DpCategory from) {

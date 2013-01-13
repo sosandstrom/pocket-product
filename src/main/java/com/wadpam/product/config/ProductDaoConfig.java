@@ -6,6 +6,8 @@ package com.wadpam.product.config;
 
 import com.wadpam.product.dao.DpCategoryDao;
 import com.wadpam.product.dao.DpCategoryDaoBean;
+import com.wadpam.product.dao.DpProductDao;
+import com.wadpam.product.dao.DpProductDaoBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,4 +25,8 @@ public class ProductDaoConfig {
         return bean;
     }
     
+    @Bean
+    public DpProductDao dpProductDao() {
+        return new DpProductDaoBean();
+    }
 }

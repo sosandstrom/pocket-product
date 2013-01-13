@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author sosandstrom
  */
-public class CategoryService extends MardaoCrudService<DpCategory, Long> {
+public class CategoryService extends MardaoCrudService<DpCategory, Long, DpCategoryDao> {
 
     @Autowired
     public void setDpCategoryDao(DpCategoryDao dpCategoryDao) {
