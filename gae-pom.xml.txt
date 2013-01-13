@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.wadpam.survey</groupId>
-    <artifactId>webapp-survey-gae</artifactId>
-    <version>5-SNAPSHOT</version>
+    <groupId>com.wadpam.pocket</groupId>
+    <artifactId>webapp-product-gae</artifactId>
+    <version>1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Pocket-Survey webapp GAE</name>
+    <name>Pocket-Product webapp GAE</name>
 
     <!-- Specify hard-coded project properties here -->
     <properties>
         <spring.profiles.active>gae</spring.profiles.active>
         <gae.version>1.7.0</gae.version>
         <gae.application.version>lab</gae.application.version>
-        <gae.application.id>pocket-survey</gae.application.id>
+        <gae.application.id>pocket-product</gae.application.id>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.1.1.RELEASE</spring.version>
+        <spring.version>3.2.0.RELEASE</spring.version>
         <spring.security.version>3.1.2.RELEASE</spring.security.version>
         <org.springframework.social.version>1.0.1.RELEASE</org.springframework.social.version>
         <downloadSources>true</downloadSources>
@@ -29,8 +29,8 @@
         <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
         <docrest.version>1.17</docrest.version>
         <logging.level>ALL</logging.level>
-        <endpoint.apiUrl>http://pocket-survey.appspot.com/api/apidocs/</endpoint.apiUrl>
-        <swagger.basePath>http://localhost:8929/swagger/</swagger.basePath>
+        <endpoint.apiUrl>http://pocket-product.appspot.com/api/apidocs/</endpoint.apiUrl>
+        <swagger.basePath>http://localhost:8386/swagger/</swagger.basePath>
     </properties>
 
     <dependencies>
@@ -80,6 +80,11 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
@@ -87,6 +92,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.6.2</version>
         </dependency>
         
         <dependency>
@@ -244,7 +254,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <basePackage>com.wadpam.survey</basePackage>
+                    <basePackage>com.wadpam.product</basePackage>
                 </configuration>
             </plugin>
 
@@ -278,7 +288,7 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <target>
-                                <copy file="src/main/resources/spring-dao.xml" tofile="target/classes/survey-dao.xml" overwrite="true" />
+                                <copy file="src/main/resources/spring-dao.xml" tofile="target/classes/product-dao.xml" overwrite="true" />
                             </target>
                         </configuration>
                         <goals>
@@ -356,7 +366,7 @@
                 <artifactId>maven-gae-plugin</artifactId>
                 <version>0.9.4</version>
                 <configuration>
-                    <port>8943</port>
+                    <port>8386</port>
                     <monitorPort>8944</monitorPort>
                     <serverId>private.gmail</serverId>
                     <disableUpdateCheck>true</disableUpdateCheck>
@@ -523,7 +533,7 @@
             <id>stage</id>
             <properties>
                 <gae.application.version>${project.version}</gae.application.version>
-                <gae.application.id>pocket-survey-stage</gae.application.id>
+                <gae.application.id>pocket-product-stage</gae.application.id>
                 <!-- endpoints -->
                 <endpoint.apiUrl>http://warburtons-stage.appspot.com/api/wbt/</endpoint.apiUrl>
                 <endpoint.signinUrl>https://warburtons-stage.appspot.com/signin/wbt/</endpoint.signinUrl>
@@ -538,7 +548,7 @@
             <id>prod</id>
             <properties>
                 <gae.application.version>${project.version}</gae.application.version>
-                <gae.application.id>pocket-survey-prod</gae.application.id>
+                <gae.application.id>pocket-product</gae.application.id>
                 <!-- endpoints -->
                 <endpoint.apiUrl>http://warburtons-prod.appspot.com/api/wbt/</endpoint.apiUrl>
                 <endpoint.signinUrl>https://warburtons-prod.appspot.com/signin/wbt/</endpoint.signinUrl>
